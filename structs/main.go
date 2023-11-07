@@ -20,12 +20,13 @@ func main() {
 	alex.lastName = "Anderson"
 	alex.contactInfo = contactInfo{"alex@gmail.com", 12345}
 
-	alex.updateName("Alexander")
+	alexPointer := &alex
+	alexPointer.updateName("Alexander")
 	alex.print()
 }
 
-func (p person) updateName(newFirstName string) {
-	p.firstName = newFirstName
+func (pointerToPerson *person) updateName(newFirstName string) {
+	(*pointerToPerson).firstName = newFirstName
 }
 
 func (p person) print() {
