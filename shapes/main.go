@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type Shape interface {
 	getArea() float64
@@ -12,12 +15,11 @@ type Triangle struct {
 }
 
 type Square struct {
-	base   float64
-	height float64
+	sideLength float64
 }
 
 func main() {
-	t, s := Triangle{5, 5}, Square{5, 5}
+	t, s := Triangle{10, 7}, Square{9}
 
 	printArea(t)
 	printArea(s)
@@ -28,7 +30,7 @@ func (t Triangle) getArea() float64 {
 }
 
 func (s Square) getArea() float64 {
-	return s.base * s.height
+	return math.Pow(s.sideLength, 2)
 }
 
 func printArea(s Shape) {
